@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using Microsoft.AspNetCore.Connections;
 
 namespace CurrencyConverter.API.Database
 {

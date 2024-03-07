@@ -8,9 +8,9 @@ namespace CurrencyConverter.API.Services
     public class QuoteService : IQuoteService
     {
         private readonly IRatesRepository _ratesRepository;
-        private readonly ILogger _logger;
+        private readonly ILogger<QuoteService> _logger;
 
-        public QuoteService(IRatesRepository ratesRepository, ILogger logger)
+        public QuoteService(IRatesRepository ratesRepository, ILogger<QuoteService> logger)
         {
             _ratesRepository = ratesRepository;
             _logger = logger;

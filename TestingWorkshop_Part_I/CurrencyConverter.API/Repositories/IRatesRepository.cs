@@ -1,4 +1,6 @@
-﻿namespace CurrencyConverter.API.Repositories
+﻿using CurrencyConverter.API.Models;
+
+namespace CurrencyConverter.API.Repositories
 {
     public interface IRatesRepository
     {

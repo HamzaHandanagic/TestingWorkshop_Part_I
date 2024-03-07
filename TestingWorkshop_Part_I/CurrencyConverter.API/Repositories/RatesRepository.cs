@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Connections;
+﻿using CurrencyConverter.API.Database;
+using CurrencyConverter.API.Models;
+using Dapper;
+using Microsoft.AspNetCore.Connections;
 
 namespace CurrencyConverter.API.Repositories
 {

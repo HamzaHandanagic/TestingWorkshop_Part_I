@@ -7,7 +7,7 @@ namespace CurrencyConverter.API
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -40,8 +40,10 @@ namespace CurrencyConverter.API
 
             app.UseAuthorization();
 
-
             app.MapControllers();
+
+            var databaseInitializer = app.Services.GetRequiredService<DatabaseInitializer>();
+            await databaseInitializer.InitializeAsync();
 
             app.Run();
         }
