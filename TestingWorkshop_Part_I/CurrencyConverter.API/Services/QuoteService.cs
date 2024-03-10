@@ -1,4 +1,5 @@
 ﻿using CurrencyConverter.API.Exceptions;
+using CurrencyConverter.API.Logger;
 using CurrencyConverter.API.Models;
 using CurrencyConverter.API.Repositories;
 using System.Diagnostics;
@@ -8,9 +9,9 @@ namespace CurrencyConverter.API.Services
     public class QuoteService : IQuoteService
     {
         private readonly IRatesRepository _ratesRepository;
-        private readonly ILogger<QuoteService> _logger;
+        private readonly ILoggerAdapter<QuoteService> _logger;
 
-        public QuoteService(IRatesRepository ratesRepository, ILogger<QuoteService> logger)
+        public QuoteService(IRatesRepository ratesRepository, ILoggerAdapter<QuoteService> logger)
         {
             _ratesRepository = ratesRepository;
             _logger = logger;
@@ -18,7 +19,6 @@ namespace CurrencyConverter.API.Services
 
         public async Task<ConversionQuote> GetQuoteAsync(string fromCurrency, string toCurrency, decimal amount)
         {
-            var sw = Stopwatch.StartNew();
             try
             {
                 if (amount <= 0)
@@ -51,8 +51,8 @@ namespace CurrencyConverter.API.Services
             finally
             {
                 _logger.LogInformation(
-                    "Retrieved quote for currencies {FromCurrency}->{ToCurrency} in {ElapsedMilliseconds}ms",
-                    fromCurrency, toCurrency, sw.ElapsedMilliseconds);
+                    "Retrieved quote for currencies {FromCurrency}->{ToCurrency}",
+                    fromCurrency, toCurrency);
             }
         }
     }
